@@ -1,0 +1,4 @@
+plugins:
+  fast_quote_enabled:
+    default: true
+    client: true
