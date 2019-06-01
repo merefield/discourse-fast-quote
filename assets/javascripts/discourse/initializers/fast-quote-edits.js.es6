@@ -27,7 +27,9 @@ export default {
             var quotedText = "";
 
             if ((quoteState.buffer == "") || (quoteState.buffer == undefined)) {
-               quotedText = Quote.build(post, post.cooked);
+               if (((topic.highest_post_number + 1) - post.post_number) > Discourse.SiteSettings.fast_quote_post_location_threshold) {
+                 quotedText = Quote.build(post, post.cooked);
+               }
             }
             else
             {

@@ -2,3 +2,6 @@ plugins:
   fast_quote_enabled:
     default: true
     client: true
+  fast_quote_post_location_threshold:
+    default: 3
+    client: true
