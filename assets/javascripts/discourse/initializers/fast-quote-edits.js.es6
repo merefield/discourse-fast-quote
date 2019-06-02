@@ -27,9 +27,17 @@ export default {
             var quotedText = "";
 
             if ((quoteState.buffer == "") || (quoteState.buffer == undefined)) {
-               if (((topic.highest_post_number + 1) - post.post_number) > Discourse.SiteSettings.fast_quote_post_location_threshold) {
+              if (post) {
+               if (((topic.highest_post_number + 1) - (post.post_number)) > Discourse.SiteSettings.fast_quote_post_location_threshold) {
                  quotedText = Quote.build(post, post.cooked);
+                 if (Discourse.SiteSettings.fast_quote_remove_prior_quotes) {
+                   quotedText = quotedText.replace(/<aside[\s\S]*<\/aside>/g, '');
+                 };
+                 if (Discourse.SiteSettings.fast_quote_remove_links) {
+                   quotedText = quotedText.replace(/<a[\s\S]*<\/a>/g, '');
+                 };
                }
+              }
             }
             else
             {
