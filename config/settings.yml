@@ -11,3 +11,9 @@ plugins:
   fast_quote_remove_links:
     default: true
     client: true
+  fast_quote_remove_contiguous_new_lines:
+    default: true
+    client: true
+  fast_quote_character_limit:
+    default: 400
+    client: true

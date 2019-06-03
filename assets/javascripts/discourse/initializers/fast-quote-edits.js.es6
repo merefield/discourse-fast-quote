@@ -36,6 +36,23 @@ export default {
                  if (Discourse.SiteSettings.fast_quote_remove_links) {
                    quotedText = quotedText.replace(/<a[\s\S]*<\/a>/g, '');
                  };
+                 const startOfQuoteText = quotedText.indexOf("]") + 2; // not forgetting the new line char
+                 const lengthOfEndQuoteTag = 11 // [/quote] and newline preceeding
+                 var startOfExcerpt = startOfQuoteText;
+                 var excerpt = "";
+                 if (Discourse.SiteSettings.fast_quote_remove_contiguous_new_lines) {
+                   debugger;
+                   excerpt = quotedText.substring(startOfExcerpt, quotedText.length - lengthOfEndQuoteTag)
+                   excerpt = excerpt.replace(/\n*\n/g, '');
+                   quotedText = quotedText.substring(0,startOfQuoteText) + excerpt + quotedText.substring(quotedText.length - lengthOfEndQuoteTag, quotedText.length);
+                 };
+                 if (Discourse.SiteSettings.fast_quote_character_limit) {
+                   if (quotedText.length > Discourse.SiteSettings.fast_quote_character_limit) {
+                     quotedText = quotedText.replace(/<[^>]*>/g, ''); // remove tags because you are splitting text so can't guarantee where
+                     startOfExcerpt = ((quotedText.length-lengthOfEndQuoteTag-Discourse.SiteSettings.fast_quote_character_limit) < startOfQuoteText) ? startOfQuoteText : quotedText.length-Discourse.SiteSettings.fast_quote_character_limit-lengthOfEndQuoteTag-2;
+                     quotedText = quotedText.substring(0,startOfQuoteText) + quotedText.substring(startOfExcerpt, quotedText.length);
+                   }
+                 };
                }
               }
             }
