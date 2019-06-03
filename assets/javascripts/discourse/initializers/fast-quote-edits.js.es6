@@ -49,7 +49,7 @@ export default {
                    if (quotedText.length > Discourse.SiteSettings.fast_quote_character_limit) {
                      quotedText = quotedText.replace(/<[^>]*>/g, ''); // remove tags because you are splitting text so can't guarantee where
                      startOfExcerpt = ((quotedText.length-lengthOfEndQuoteTag-Discourse.SiteSettings.fast_quote_character_limit) < startOfQuoteText) ? startOfQuoteText : quotedText.length-Discourse.SiteSettings.fast_quote_character_limit-lengthOfEndQuoteTag-2;
-                     quotedText = quotedText.substring(0,startOfQuoteText) + quotedText.substring(startOfExcerpt, quotedText.length);
+                     quotedText = quotedText.substring(0,startOfQuoteText) + "..." + quotedText.substring(startOfExcerpt, quotedText.length);
                    }
                  };
                }
