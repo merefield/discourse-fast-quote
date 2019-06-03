@@ -41,7 +41,6 @@ export default {
                  var startOfExcerpt = startOfQuoteText;
                  var excerpt = "";
                  if (Discourse.SiteSettings.fast_quote_remove_contiguous_new_lines) {
-                   debugger;
                    excerpt = quotedText.substring(startOfExcerpt, quotedText.length - lengthOfEndQuoteTag)
                    excerpt = excerpt.replace(/\n*\n/g, '');
                    quotedText = quotedText.substring(0,startOfQuoteText) + excerpt + quotedText.substring(quotedText.length - lengthOfEndQuoteTag, quotedText.length);
