@@ -1,2 +1,1 @@
-# A small plugin for Discourse which changes the reply to post behaviour by
-# including by default a full quote of the original post
+# Please take at the Topic here https://meta.discourse.org/t/fast-quote-plugin/120427
