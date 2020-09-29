@@ -1,1 +1,1 @@
-[More info about this plugin on the Discourse Meta forum here](https://meta.discourse.org/t/fast-quote-plugin/120427)
+No longer supported.  Use the replacement instead: https://github.com/merefield/discourse-quick-quote
